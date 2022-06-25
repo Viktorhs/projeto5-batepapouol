@@ -99,7 +99,7 @@ p{
     background-color: #FFFFFF;
 }
 
-input, ::placeholder{
+.barra-mensagem input, ::placeholder{
     width: 100%;
     height: 40px;
     font-weight: 400;
@@ -118,33 +118,64 @@ input:focus{
 }
 
 .menu-lateral{
+    display: flex;
     position: fixed;
     z-index: 2;
     width: 100%;
     height: 100%;
     left: 0;
     top: 0;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.1);
+
+}
+.chat-lista{
+    max-height: 550px;
+    overflow-y: auto;
 }
 
-.menu-lateral>div{
+/* width */
+.chat-lista::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  /* Track */
+  .chat-lista::-webkit-scrollbar-track {
+    background: #fab8b8; 
+    border-radius: 10px;
+  }
+   
+  /* Handle */
+  .chat-lista::-webkit-scrollbar-thumb {
+    background:     rgba(141, 14, 14, 0.5); 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  .chat-lista::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
+.menu-lateral div:first-child{
+    background: rgba(0, 0, 0, 0.6);
+    height: 100%;
+    width: 30%;
+    z-index: 3;
+}
+
+.menu-contatos{
     width: 70%;
     height: 100%;
-    background-color: #FFFFFF;
-    position: fixed;
-    right: 0;
-    top: 0;
+    background: #FFFFFF;
 }
-.menu-lateral span{
+.chat-lista span, .visibilidade span{
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    margin-bottom: 8px;
     word-break: break-all;
-
+    width: 85%;
 }
 
-.menu-lateral h4{
+.menu-contatos h4{
     width: 170px;
     height: 84px;
     font-weight: 700;
@@ -157,33 +188,43 @@ input:focus{
     align-items: center;
     text-align: center;
 }
-.menu-lateral h4:last-child{
+.menu-contatos h4:last-child{
     height: 66px;
 }
 
-.menu-lateral ion-icon{
+.menu-contatos ion-icon{
     font-size: 25px;
     margin: 0 8px 0 17px;
 }
 
 .chat-lista li, .visibilidade li{
-    margin: 6px 0;
+    margin: 9px 0;
     display: flex;
+    max-width: 95%;
     align-items: center;
     justify-content: space-between;
+}
 
+.menu-contatos h5{
     font-weight: 400;
     font-size: 16px;
     line-height: 19px;
-
 }
 
 .ativo{
-    color: green;
-    width: 15px;
-    --ionicon-stroke-width: 100px;
-    padding-bottom: 8px;
-    position: inherit;
+    background:url(../img/Vector.svg);
+    background-repeat: no-repeat;
+    background-position: center right;
+}
+
+.parte-lista{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.parar{
+    overflow:hidden;
 }
 
 ::placeholder{
@@ -196,6 +237,82 @@ input:focus{
 .privado{
     background:#FFDEDE ;
 }
+
+
+/* tela de login bonus */
+
+.tela-login{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: #FFFFFF;
+}
+.login{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.tela-login img{
+    margin: 72px 0 94px 0;
+    width: 130px;
+    height: 92px;
+}
+
+.tela-login input{
+    text-align: center;
+    width: 260px;
+    height: 54px;
+    border: 1px solid #D7D7D7;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+.tela-login input::placeholder{
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+    text-align: center;
+    border: none;
+}
+.tela-login input:focus{
+    text-align: center;
+}
+
+.entrar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 109px;
+    height: 45px;
+
+    color: #696969;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+
+    background: #E7E7E7;
+    border-radius: 9px;
+    cursor: pointer;
+    transition: 100ms;
+}
+
+.entrar:hover{
+    filter: brightness(94%);
+}
+.entrar:active{
+    filter: brightness(86%);
+}
+
+.carregar h6{
+    font-weight: 400;
+    font-size: 18px;
+}
+
+
+
 .esconder{
     display: none;
 }

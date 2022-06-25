@@ -8,97 +8,80 @@
 
     <link rel="stylesheet" href="./src/css/reset.css">
     <link rel="stylesheet" href="./src/css/style.css">
+    <link rel="stylesheet" href="./src/css/loading.css">
 </head>
 <body>
-    <header>
+    <header class="esconder">
         <img src="./src/img/logo 1.svg" alt="">
         <div>
-            <ion-icon name="people-sharp" class="menu-botao"></ion-icon>
+            <ion-icon name="people-sharp" class="menu-botao" onclick="menuLateral()"></ion-icon>
         </div>
     </header>
 
-    <main>
+    <main class="escoder">
         <ul class="mensagens">
-            <li class="status">
-                <p>(09:21:45)</p>
-                <h2><strong>João</strong> entrou na sala...</h2>
-                <h3></h3>
-            </li>
-            <li>
-                <p>(09:22:28)</p>
-                <h2><strong>João</strong> para todos:</h2>
-                <h3>Bom dia</h3>
-            </li>
-            <li>
-                <p>(09:22:38)</p>
-                <h2><strong>Maria</strong> para <strong>João</strong>:</h2>
-                <h3>Oi João :)</h3>
-            </li>
-            <li class="privado">
-                <p>(09:22:48)</p>
-                <h2><strong>João</strong> reservadamente para <strong>Maria</strong>:</h2>
-                <h3>Oi gatinha quer tc?</h3>
-            </li>
-            <li class="status">
-                <p>(09:22:58)</p>
-                <h2><strong>Maria</strong> sai da sala...</h2>
-                <h3></h3>
-            </li>
         </ul>
-        <div class="barra-mensagem">
+        <div class="barra-mensagem esconder">
             <div>
                 <input type="text" placeholder="Escreva aqui...">
-                <ion-icon name="paper-plane-outline" class="enviar"></ion-icon>
+                <ion-icon name="paper-plane-outline" class="enviar" onclick="enviarMensagen()"></ion-icon>
             </div>
-            <p>Enviado para Maria(reservadamente)</p>
+            <p>Enviado para Todos(Público)</p>
         </div>
     </main>
 
     <div class="menu-lateral esconder">
-        <div>
-            <span>
+        <div onclick="esconderMenuLateral(this)"></div>
+        <div class="menu-contatos">
+            <span class="parte-lista">
                 <h4>Escolha um contato para enviar mensagem:</h4>
             </span>
             <ul class="chat-lista">
-                <li>
-                    <span>
+                <li class="ativo">
+                    <span onclick="escolherPessoa(this)">
                         <ion-icon name="people-sharp"></ion-icon>
                         <h5>Todos</h5> 
                     </span>
                 </li>
-                <li>
-                    <span>
-                        <ion-icon name="person-circle-sharp"></ion-icon>
-                        <h5>João</h5>
-                    </span>
-                </li>
-                <li>
-                    <span>
-                        <ion-icon name="person-circle-sharp"></ion-icon>
-                        <h5>Maria</h5>
-                    </span>
-                    <ion-icon name="checkmark" class="ativo"></ion-icon>
-                </li>
             </ul>
-            <span>
+            <span class="parte-lista">
                 <h4>Escolha a visibilidade:</h4>
             </span>
             <ul class="visibilidade">
-                <li>
+                <li class="ativo" onclick="escolherModo(this)">
                     <span>
                         <ion-icon name="lock-open"></ion-icon>
                         <h5>Público</h5>
                     </span>
                 </li>
-                <li>
+                <li onclick="escolherModo(this)">
                     <span>
                         <ion-icon name="lock-closed"></ion-icon>
                         <h5>Reservadamente</h5>
                     </span>
-                    <ion-icon name="checkmark" class="ativo"></ion-icon>
                 </li>
             </ul>
         </div>
+    </div>
+
+    <div class="tela-login">
+        <div class="logo">
+            <img src="./src/img/logo 2.png" alt="">
+        </div>
+        <div class="login">
+            <div class="nome">
+                <input type="text" name="" id="" placeholder="Digite seu nome">
+            </div>
+            <div class="entrar" onclick="botaoEntrar()">
+                Entrar
+            </div>
+        </div>
+        <div class="carregar esconder">
+            <div class="loader">Entrando...</div>
+            <h6>Entrando...</h6>
+        </div>
+
+
     </div>
     
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
