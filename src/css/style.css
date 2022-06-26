@@ -311,7 +311,9 @@ input:focus{
     font-size: 18px;
 }
 
-
+.voce{
+    background-color: rgba(116, 235, 80, 0.37);
+}
 
 .esconder{
     display: none;

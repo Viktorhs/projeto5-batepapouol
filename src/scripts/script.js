@@ -73,7 +73,7 @@ function montarMensagens() {
                 <h2><strong>${mensagensRecebidas[i].from}</strong> ${mensagensRecebidas[i].text}</h2>
             </li>`
             chat.push(mensagem);
-        }else if(mensagensRecebidas[i].type === "private_message" && mensagensRecebidas[i].to === nomeUsuario.name){    
+        }else if(mensagensRecebidas[i].type === "private_message" && (mensagensRecebidas[i].to === nomeUsuario.name || mensagensRecebidas[i].from === nomeUsuario.name)){    
             mensagem = `
             <li class="privado">
                 <p>(${mensagensRecebidas[i].time})</p>
@@ -81,7 +81,7 @@ function montarMensagens() {
                 <h3>${mensagensRecebidas[i].text}</h3>
             </li>`
             chat.push(mensagem)
-        }else {
+        }else if(mensagensRecebidas[i].type !== "private_message") {
             mensagem = `
             <li>
                 <p>(${mensagensRecebidas[i].time})</p>
@@ -168,14 +168,27 @@ function montarLista(){
     listaPessoas.push(template);
 
     for(let i = 0; i < pessoas.length; i++) {
-        template = `
-        <li>
-            <span onclick="escolherPessoa(this)">
-                <ion-icon name="person-circle-sharp"></ion-icon>
-                <h5>${pessoas[i].name}</h5> 
-            </span>
-        </li>`
-        listaPessoas.push(template);
+        
+        if(pessoas[i].name === nomeUsuario.name){
+            template = `
+            <li>
+                <span onclick="escolherPessoa(this)" class="voce">
+                    <ion-icon name="person-circle-sharp"></ion-icon>
+                    <h5>${pessoas[i].name} (você)</h5> 
+                </span>
+            </li>`;
+            listaPessoas.push(template);
+        }else{
+            template = `
+            <li>
+                <span onclick="escolherPessoa(this)">
+                    <ion-icon name="person-circle-sharp"></ion-icon>
+                    <h5>${pessoas[i].name}</h5> 
+                </span>
+            </li>`;
+            listaPessoas.push(template);
+        }
+
     }
 }
 
@@ -249,10 +262,16 @@ function habilitarChat(){
     document.querySelector("main").classList.remove("esconder")
     document.querySelector(".barra-mensagem").classList.remove("esconder")
 
+    document.addEventListener('keypress', function(e){
+        if(e.which == 13){
+            enviarMensagen();
+        }
+      }, false);
+      
+
 }
 
 function nomeJaUtilizado() {
     document.querySelector(".login").classList.remove("esconder")
     document.querySelector(".tela-login .carregar").classList.add("esconder")
 }
-
