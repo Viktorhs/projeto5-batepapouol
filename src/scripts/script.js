@@ -108,14 +108,13 @@ function enviarMensagen() {
 	    text: mensagemDigitada,
 	    type: tipoDeMensagem,
     }
-    console.log(mensagemParaServidor)
+    //console.log(mensagemParaServidor)
     let promessa = axios.post("https://mock-api.driven.com.br/api/v6/uol/messages", mensagemParaServidor)
     promessa.then(enviarMensagenSucesso);
     promessa.catch(enviarMensagenErro);
 }
 
 function enviarMensagenSucesso(sucesso) {
-    console.log("tudo certo")
     document.querySelector(".barra-mensagem input").value = ""
     paraQuem = "Todos"
     tipoDeMensagem = "message"
@@ -275,3 +274,4 @@ function nomeJaUtilizado() {
     document.querySelector(".login").classList.remove("esconder")
     document.querySelector(".tela-login .carregar").classList.add("esconder")
 }
+
